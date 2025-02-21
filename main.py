@@ -156,13 +156,27 @@ for i in range(len(departing_NOR_time)):
 print("Days Off Needed: ", days_off_list)
 
 
-
-
-
-
-
-
-
-# Fourth, we want to print out the 3 cheapest flights and the days off needed for each flight
-# We will sort the flights by price and print out the top 3
+# Fourth, we want to print out the 8 cheapest flights and the days off needed for each flight
+# We will sort the flights by price and print out the top 8
 # We will also print out the days off needed for each flight
+
+# Combine the flight details into a list of tuples
+flight_details = list(zip(carrier, departing_NOR_time, arriving_LEX_time, departing_LEX_time, arriving_NOR_time, price, total_price, days_off_list))
+
+# Sort the flights by total price
+flight_details.sort(key=lambda x: x[6])
+
+# Print the 8 cheapest flights and the days off needed for each flight
+print("\n8 Cheapest Flights:")
+for i in range(8):
+    print(f"Flight {i+1}:")
+    print(f"Carrier: {flight_details[i][0]}")
+    print(f"Departing Norfolk: {flight_details[i][1]}")
+    print(f"Arriving Lexington: {flight_details[i][2]}")
+    print(f"Departing Lexington: {flight_details[i][3]}")
+    print(f"Arriving Norfolk: {flight_details[i][4]}")
+    print(f"Ticket Price: ${flight_details[i][5]}")
+    print(f"Total Price: ${flight_details[i][6]}")
+    print(f"Days Off Needed: {flight_details[i][7]}")
+    print()
+
